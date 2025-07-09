@@ -2,6 +2,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application android:label="manantial_prueba" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDkDy86G7vdu2_l1gzyHhYCNqUkZJWgAZI"/>

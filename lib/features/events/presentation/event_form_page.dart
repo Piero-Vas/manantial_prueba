@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:manantial_prueba/core/services/notification_service.dart';
 import 'package:manantial_prueba/core/widgets/custom_button.dart';
 import 'package:manantial_prueba/features/events/domain/entities/event.dart';
 import 'package:manantial_prueba/features/events/presentation/bloc/events_bloc.dart';
@@ -44,7 +45,7 @@ class _EventFormPageState extends State<EventFormPage> {
     super.dispose();
   }
 
-  void _onSave() {
+  void _onSave() async {
     if (_formKey.currentState?.validate() != true) return;
     final event = Event(
       id: widget.initialEvent?.id ?? DateTime.now().millisecondsSinceEpoch,
@@ -59,6 +60,15 @@ class _EventFormPageState extends State<EventFormPage> {
       date: _selectedDate,
       locationDescription: _locationDescriptionController.text.trim(),
     );
+    if (_enableAlert) {
+      await NotificationService.showNotification(
+        id: event.id,
+        title: 'Alerta de evento',
+        body: event.description,
+      );
+    } else {
+      await NotificationService.cancelNotification(event.id);
+    }
     if (widget.initialEvent == null) {
       context.read<EventsBloc>().add(AddEvent(event));
     } else {
@@ -140,12 +150,6 @@ class _EventFormPageState extends State<EventFormPage> {
                 title: Text('Marcar como favorito'),
               ),
               SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _onSave,
-                child: Text(widget.initialEvent == null
-                    ? 'Agregar'
-                    : 'Guardar cambios'),
-              ),
               CustomButton(
                   label: widget.initialEvent == null
                       ? 'Agregar'

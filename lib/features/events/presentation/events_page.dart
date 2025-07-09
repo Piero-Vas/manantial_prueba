@@ -16,6 +16,7 @@ import 'package:manantial_prueba/features/events/presentation/no_connection_page
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:manantial_prueba/features/events/presentation/widgets/event_map_sheet.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:manantial_prueba/core/services/notification_service.dart';
 
 class EventsPage extends StatefulWidget {
   const EventsPage({super.key});
@@ -32,6 +33,7 @@ class _EventsPageState extends State<EventsPage> {
   void initState() {
     super.initState();
     _searchController.addListener(_onSearchChanged);
+    NotificationService.initialize(context);
   }
 
   void _onSearchChanged() {
@@ -108,6 +110,7 @@ class _EventsPageState extends State<EventsPage> {
       ),
     );
     if (confirm == true) {
+      await NotificationService.cancelNotification(event.id);
       context.read<EventsBloc>().add(DeleteEvent(event.id));
     }
   }
