@@ -48,13 +48,13 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         if (state is AuthFailure) {
           debugPrint('Error de autenticación: ${state.message}');
-          mensaje(3, context, TypeMessage.danger, 'Sucedió algo inesperado, por favor intenta nuevamente');
+          mensaje(3, context, TypeMessage.danger,
+              'Sucedió algo inesperado, por favor intenta nuevamente');
         }
         if (state is AuthSuccess) {
-          // Navegar a la siguiente pantalla
-          // Navigator.pushReplacementNamed(context, '/home');
-          debugPrint('Usuario autenticado: ${state.user.email}');
-          mensaje(3, context, TypeMessage.success, 'Bienvenido ${state.user.email}');
+          mensaje(3, context, TypeMessage.success,
+              'Bienvenido ${state.user.email}');
+          Navigator.pushReplacementNamed(context, '/events');
         }
       },
       builder: (context, state) {
@@ -84,8 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                       label: state is AuthLoading
                           ? 'Cargando...'
                           : 'Iniciar sesión',
-                      onPressed:
-                          state is AuthLoading ? () {} : _onLoginPressed,
+                      onPressed: state is AuthLoading ? () {} : _onLoginPressed,
                       type: 'primary',
                     ),
                     SizedBox(height: 16),
@@ -105,7 +104,9 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: state is AuthLoading
                           ? () {}
                           : () {
-                              context.read<AuthBloc>().add(LoginWithGoogleRequested());
+                              context
+                                  .read<AuthBloc>()
+                                  .add(LoginWithGoogleRequested());
                             },
                       type: 'outline_primary',
                       icon: Image.asset('assets/img/google.png', height: 24),
@@ -116,11 +117,13 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: state is AuthLoading
                           ? () {}
                           : () {
-                              context.read<AuthBloc>().add(LoginWithMicrosoftRequested());
+                              context
+                                  .read<AuthBloc>()
+                                  .add(LoginWithMicrosoftRequested());
                             },
                       type: 'outline_secondary',
                       icon: Icon(Icons.email, color: Colors.blue[700]),
-                    )
+                    ),
                   ],
                 ),
               ),
