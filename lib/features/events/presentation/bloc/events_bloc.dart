@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import '../../domain/entities/event.dart';
 import '../../domain/repositories/event_repository.dart';
 import 'events_event.dart';
 import 'events_state.dart';
 
+@injectable
 class EventsBloc extends Bloc<EventsEvent, EventsState> {
   final EventRepository repository;
   EventsBloc(this.repository) : super(EventsInitial()) {

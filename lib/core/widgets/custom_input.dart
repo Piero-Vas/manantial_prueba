@@ -10,6 +10,7 @@ class CustomInput extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final TextInputType? keyboardType;
   final double borderRadius;
+  final String? Function(String?)? validator;
 
   const CustomInput({
     super.key,
@@ -22,6 +23,7 @@ class CustomInput extends StatefulWidget {
     this.onChanged,
     this.keyboardType,
     this.borderRadius = 16.0,
+    this.validator,
   });
 
   @override
@@ -39,11 +41,12 @@ class _CustomInputState extends State<CustomInput> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: widget.controller,
       obscureText: _obscure,
       keyboardType: widget.keyboardType,
       onChanged: widget.onChanged,
+      validator: widget.validator,
       decoration: InputDecoration(
         labelText: widget.label,
         hintText: widget.hintText,

@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 import '../../domain/usecases/login_with_email_and_password.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginWithEmailAndPassword loginWithEmailAndPassword;
 

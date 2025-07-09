@@ -31,9 +31,8 @@ class _LoginPageState extends State<LoginPage> {
     final password = _passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Por favor ingresa email y contraseña')),
-      );
+      mensaje(3, context, TypeMessage.danger,
+          'Por favor completa todos los campos');
       return;
     }
 
@@ -47,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthFailure) {
-          debugPrint('Error de autenticación: ${state.message}');
           mensaje(3, context, TypeMessage.danger,
               'Sucedió algo inesperado, por favor intenta nuevamente');
         }
@@ -72,12 +70,18 @@ class _LoginPageState extends State<LoginPage> {
                     CustomInput(
                       label: 'Correo electrónico',
                       controller: _emailController,
+                      validator: (v) => v == null || v.trim().isEmpty
+                          ? 'Campo obligatorio'
+                          : null,
                     ),
                     SizedBox(height: 16),
                     CustomInput(
                       label: 'Contraseña',
                       controller: _passwordController,
                       obscureText: true,
+                      validator: (v) => v == null || v.trim().isEmpty
+                          ? 'Campo obligatorio'
+                          : null,
                     ),
                     SizedBox(height: 24),
                     CustomButton(

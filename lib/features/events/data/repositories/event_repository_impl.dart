@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import '../../domain/entities/event.dart';
 import '../../domain/repositories/event_repository.dart';
 import '../datasources/event_local_datasource.dart';
@@ -5,6 +6,7 @@ import '../datasources/event_remote_datasource.dart';
 import '../models/event_isar_mapper.dart';
 import 'package:manantial_prueba/core/network/network_info.dart';
 
+@Injectable(as: EventRepository)
 class EventRepositoryImpl implements EventRepository {
   final EventLocalDataSource localDataSource;
   final EventRemoteDataSource remoteDataSource;

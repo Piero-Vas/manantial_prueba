@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import '../models/event_isar_model.dart';
 
 abstract class EventRemoteDataSource {
   Future<List<EventIsarModel>> fetchEvents();
 }
 
+@Injectable(as: EventRemoteDataSource)
 class EventRemoteDataSourceImpl implements EventRemoteDataSource {
   final String apiUrl;
   EventRemoteDataSourceImpl({required this.apiUrl});

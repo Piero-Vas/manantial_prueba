@@ -1,4 +1,5 @@
 import 'package:isar/isar.dart';
+import 'package:injectable/injectable.dart';
 import '../models/event_isar_model.dart';
 
 abstract class EventLocalDataSource {
@@ -9,6 +10,7 @@ abstract class EventLocalDataSource {
   Future<void> clearAll();
 }
 
+@Injectable(as: EventLocalDataSource)
 class EventLocalDataSourceImpl implements EventLocalDataSource {
   final Isar isar;
   EventLocalDataSourceImpl(this.isar);

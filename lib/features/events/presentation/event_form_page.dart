@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:manantial_prueba/core/services/notification_service.dart';
 import 'package:manantial_prueba/core/widgets/custom_button.dart';
+import 'package:manantial_prueba/core/widgets/custom_input.dart';
 import 'package:manantial_prueba/features/events/domain/entities/event.dart';
 import 'package:manantial_prueba/features/events/presentation/bloc/events_bloc.dart';
 import 'package:manantial_prueba/features/events/presentation/bloc/events_event.dart';
@@ -112,26 +113,24 @@ class _EventFormPageState extends State<EventFormPage> {
           key: _formKey,
           child: ListView(
             children: [
-              TextFormField(
+              CustomInput(
+                label: 'Descripción',
                 controller: _descriptionController,
-                decoration: InputDecoration(labelText: 'Descripción'),
                 validator: (v) =>
                     v == null || v.trim().isEmpty ? 'Campo obligatorio' : null,
               ),
               SizedBox(height: 16),
-              TextFormField(
-                controller: _locationDescriptionController,
-                decoration:
-                    InputDecoration(labelText: 'Referencia de ubicación'),
-                validator: (v) =>
-                    v == null || v.trim().isEmpty ? 'Campo obligatorio' : null,
-              ),
+              CustomInput(
+                  label: 'Referencia de ubicación',
+                  controller: _locationDescriptionController,
+                  keyboardType: TextInputType.number,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Campo obligatorio'
+                      : null),
               SizedBox(height: 16),
-              TextFormField(
-                controller: _photoUrlController,
-                decoration:
-                    InputDecoration(labelText: 'URL de foto (opcional)'),
-              ),
+              CustomInput(
+                  label: 'Url de foto (opcional)',
+                  controller: _photoUrlController),
               SizedBox(height: 16),
               ListTile(
                 title: Text(
