@@ -51,6 +51,10 @@ class CustomButton extends StatelessWidget {
         textColor = AppColors.white;
     }
 
+    if (textColorApp != null) {
+      textColor = textColorApp!;
+    }
+
     return Row(
       children: [
         Expanded(
@@ -65,7 +69,8 @@ class CustomButton extends StatelessWidget {
                     ? BorderSide(color: textColor, width: 2)
                     : BorderSide.none,
               ),
-              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
             ),
             onPressed: disabled ? null : onPressed,
             child: Row(
