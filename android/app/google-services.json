@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "56169598740",
+    "project_id": "manantial-d2971",
+    "storage_bucket": "manantial-d2971.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56169598740:android:fa39c9922c07e32952fc01",
+        "android_client_info": {
+          "package_name": "com.example.manantial_prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56169598740-vinp65jkd41phr3o50obpgno7js733vo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.manantial_prueba",
+            "certificate_hash": "6fbbfc1bd1895d1d1a8b8ad10d7b509a420aee38"
+          }
+        },
+        {
+          "client_id": "56169598740-tq3qblithnv7qknb4d93dhvob1i40qk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLXo_QLOnyYxx5m-UU0sYwbAEjTsj3RMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56169598740-tq3qblithnv7qknb4d93dhvob1i40qk4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "56169598740-c00c3r5qmqk25uilhfa0j096ta3menmb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.manantialPrueba"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

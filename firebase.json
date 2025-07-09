@@ -1,0 +1,22 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "manantial-d2971",
+          "appId": "1:56169598740:android:fa39c9922c07e32952fc01",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "manantial-d2971",
+          "configurations": {
+            "android": "1:56169598740:android:fa39c9922c07e32952fc01",
+            "ios": "1:56169598740:ios:be7c1f401d1e116d52fc01"
+          }
+        }
+      }
+    }
+  }
+}
